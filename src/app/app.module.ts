@@ -38,7 +38,7 @@ import 'hammerjs';
     /**Register the TTP service */
     HttpModule,
     BrowserAnimationsModule,
-    [MaterialModule]    
+    MaterialModule
   ],
   providers: [PokedexService],
   bootstrap: [AppComponent]
