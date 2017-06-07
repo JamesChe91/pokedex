@@ -42,7 +42,7 @@ export class AppComponent {
     this.isLoading = true;
     /**Use the Pokedex service to load the next (8) Pokemon. */
 
-    this.pokedexService.getPokemon(this.pokemon.length, 8)
+    this.pokedexService.getPokemon(this.pokemon.length, 6)
       .then(pokemon => {
         pokemon = pokemon.map(p => {
           p.imageLoaded = false;

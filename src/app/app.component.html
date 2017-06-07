@@ -1,18 +1,19 @@
-<md-toolbar>
+<div>
+<md-toolbar color="primary">
 <img src='../assets/favicon.png' />
   <span>Pokedex</span>
 </md-toolbar>
-<md-grid-list cols="8" rowHeight="1:2" class="pokedex">
+<md-grid-list cols="6" rowHeight="1:2" class="pokedex">
   <md-grid-tile class="pokedex-pokemon" *ngFor="let p of pokemon">
-    <md-card class="example-card">
-      <!--<md-card-header>-->
+    <md-card>
+      <md-card-header >
       <!--<div md-card-avatar>
           <img [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
           />
         </div>-->
       <md-card-title> {{ p.name | capitalize }}</md-card-title>
       <md-card-subtitle>#{{p.id}}</md-card-subtitle>
-      <!--</md-card-header>-->
+      </md-card-header>
       <img md-card-image [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
       />
       <md-card-content>
@@ -20,22 +21,22 @@
         </p>
       </md-card-content>
       <md-card-actions>
-        <button md-button>More...</button>
-        <button md-button>SHARE</button>
+        <button md-raised-button>More...</button>
+        <button md-raised-button color="primary">SHARE</button>
       </md-card-actions>
     </md-card>
   </md-grid-tile>
 </md-grid-list>
-<button md-raised-button class="load-button" (click)=loadMore() [disabled]="isLoading">  
+<button md-mini-fab class="load-button" (click)=loadMore() [disabled]="isLoading">  
   <span *ngIf="!error">
     <span *ngIf="isLoading">Loading...</span>
-    <span *ngIf="!isLoading">Load more</span>
+    <span *ngIf="!isLoading"><md-icon>add</md-icon></span>
   </span>
   <span *ngIf="error">
     Loading failed
   </span>
 </button>
-
+</div>
 
 
 
