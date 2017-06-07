@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 /**
  * The HTTP service is not added by default
  * so we need to import it.
@@ -20,6 +22,9 @@ import { PokedexService } from './pokedex.service';
 import { CapitalizePipe } from './capitalize.pipe';
 
 
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +36,9 @@ import { CapitalizePipe } from './capitalize.pipe';
     CommonModule,
     FormsModule,
     /**Register the TTP service */
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    [MaterialModule]    
   ],
   providers: [PokedexService],
   bootstrap: [AppComponent]

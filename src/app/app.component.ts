@@ -7,6 +7,9 @@ import { PokedexService } from './pokedex.service';
 /**Import the Pokemon class */
 import { Pokemon } from './pokemon'
 
+
+export class CardOverviewExample {}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,9 +40,9 @@ export class AppComponent {
 
   loadMore() {
     this.isLoading = true;
-    /**Use the Pokedex service to load the next 9 Pokemon. */
+    /**Use the Pokedex service to load the next (8) Pokemon. */
 
-    this.pokedexService.getPokemon(this.pokemon.length, 9)
+    this.pokedexService.getPokemon(this.pokemon.length, 8)
       .then(pokemon => {
         pokemon = pokemon.map(p => {
           p.imageLoaded = false;
