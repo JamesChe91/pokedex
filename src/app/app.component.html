@@ -1,62 +1,57 @@
-<div>
-<md-toolbar color="primary">
-<img src='../assets/favicon.png' />
+<md-toolbar color="warn">
+  <img src='../assets/favicon.png' class="brand-logo" />
   <span>Pokedex</span>
+  <span class="lang-spacer"></span>
+  <md-icon>translate</md-icon>
+  <md-select placeholder="Language" [(ngModel)]="languageSelected" name="language">
+    <md-option *ngFor="let language of languages" [value]="language.value">
+      {{language.viewValue}}
+    </md-option>
+  </md-select>
 </md-toolbar>
-<md-grid-list cols="6" rowHeight="1:2" class="pokedex">
+<div class="searcher">
+  <md-icon>search</md-icon>
+  <md-input-container>
+    <input mdInput placeholder="Search by name or id">
+  </md-input-container>
+</div>
+<md-grid-list cols="4" rowHeight="1:1" class="pokedex">
   <md-grid-tile class="pokedex-pokemon" *ngFor="let p of pokemon">
-    <md-card>
-      <md-card-header >
-      <!--<div md-card-avatar>
+    <md-card class="pokemon-card">
+      <md-card-header>
+        <div md-card-avatar class="header-image"></div>
+        <!--<div md-card-avatar>
           <img [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
           />
         </div>-->
-      <md-card-title> {{ p.name | capitalize }}</md-card-title>
-      <md-card-subtitle>#{{p.id}}</md-card-subtitle>
+        <md-card-title> {{ p.name | capitalize }}</md-card-title>
+        <md-card-subtitle>#{{p.id}}</md-card-subtitle>
       </md-card-header>
-      <img md-card-image [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
-      />
-      <md-card-content>
-        <p>
-        </p>
-      </md-card-content>
-      <md-card-actions>
-        <button md-raised-button>More...</button>
-        <button md-raised-button color="primary">SHARE</button>
+      <div class="center">
+        <img md-card-image [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
+        />
+      </div>
+      <!--<md-card-content>
+    <p>     
+     
+    </p>
+  </md-card-content>-->
+      <md-card-actions class="btn-action">
+        <button md-raised-button color="primary"><md-icon>art_track</md-icon> More Info</button>
       </md-card-actions>
     </md-card>
+  </md-grid-tile>
+  <md-grid-tile *ngIf="isLoading">
+    <md-spinner color="warn">
+    </md-spinner>
   </md-grid-tile>
 </md-grid-list>
 <button md-mini-fab class="load-button" (click)=loadMore() [disabled]="isLoading">  
   <span *ngIf="!error">
-    <span *ngIf="isLoading">Loading...</span>
+    <span *ngIf="isLoading"><md-icon>hourglass_empty</md-icon></span>
     <span *ngIf="!isLoading"><md-icon>add</md-icon></span>
   </span>
   <span *ngIf="error">
     Loading failed
   </span>
 </button>
-</div>
-
-
-
-<!--The whole content below can be removed with the new code.
-<div style="text-align:center ">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <img width="300 " src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=" />
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target=" _blank " href="https://angular.io/docs/ts/latest/tutorial/ ">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank " href="https://github.com/angular/angular-cli/wiki ">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank " href="http://angularjs.blogspot.ca/ ">Angular blog</a></h2>
-  </li>
-</ul>
--->

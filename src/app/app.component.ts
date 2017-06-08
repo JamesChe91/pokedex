@@ -16,6 +16,15 @@ export class CardOverviewExample {}
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  languageSelected: string='EN';
+
+  languages = [
+    {value: 'EN', viewValue: 'English'},
+    {value: 'ES', viewValue: 'Spanish'},
+    {value: 'GER', viewValue: 'German'},
+    {value: 'FRE', viewValue: 'French'},
+    {value: 'JAP', viewValue: 'Japanese'}
+  ];
   /**The component maitains a list o Pokemon objects tha will be rendered.
    * 
    * We initialize it to an empty list
@@ -42,7 +51,7 @@ export class AppComponent {
     this.isLoading = true;
     /**Use the Pokedex service to load the next (8) Pokemon. */
 
-    this.pokedexService.getPokemon(this.pokemon.length, 6)
+    this.pokedexService.getPokemon(this.pokemon.length, 8)
       .then(pokemon => {
         pokemon = pokemon.map(p => {
           p.imageLoaded = false;
