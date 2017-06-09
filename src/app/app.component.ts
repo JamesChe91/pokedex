@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {FormControl} from '@angular/forms';
+
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 /**
  * Import the Pokedex service
  */
@@ -37,8 +41,18 @@ export class AppComponent {
   /**This boolean will be set to true if an error occurred */
   error: boolean; false;
 
+//autoComplete
+  stateCtrl: FormControl;
+  filteredPokemon: any;
+
   /**Inject the Pokedex service */
-  constructor(private pokedexService: PokedexService) { }
+  constructor(private pokedexService: PokedexService) {
+    //autoComplete
+    this.stateCtrl = new FormControl();
+    this.filteredPokemon = this.stateCtrl.valueChanges
+        .startWith(null)
+        .map(name => this.filterStates(name));
+   }
 
   /**A lifecycle method that is automatically envoked when the component is created. */
 
@@ -49,14 +63,11 @@ export class AppComponent {
 
   loadMore() {
     this.isLoading = true;
-    /**Use the Pokedex service to load the next (8) Pokemon. */
+    /**Use the Pokedex service to load the next (6) Pokemon. */
 
-    this.pokedexService.getPokemon(this.pokemon.length, 8)
+    this.pokedexService.getPokemon(this.pokemon.length, 6)
       .then(pokemon => {
-        pokemon = pokemon.map(p => {
-          p.imageLoaded = false;
-          return p;
-        });
+        pokemon = pokemon;
         /**If loading was successful we append the result to the list */
         this.pokemon = this.pokemon.concat(pokemon);
         this.isLoading = false;
@@ -66,5 +77,9 @@ export class AppComponent {
         this.error = true;
         this.isLoading = false;
       })
+  }
+  filterStates(val: string) {
+    return val ? this.pokemon.filter(s => new RegExp(`^${val}`, 'gi').test(s.name))
+               : null;
   }
 }

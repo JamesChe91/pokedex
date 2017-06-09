@@ -9,12 +9,17 @@
     </md-option>
   </md-select>
 </md-toolbar>
-<div class="searcher">
+<md-toolbar>
   <md-icon>search</md-icon>
-  <md-input-container>
-    <input mdInput placeholder="Search by name or id">
+  <md-input-container color="primary">
+    <input mdInput placeholder="Search pokemon" [mdAutocomplete]="auto" [formControl]="stateCtrl" color="accent">
   </md-input-container>
-</div>
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let pokemon of filteredPokemon | async" [value]="pokemon.name">
+      {{ pokemon.name }}
+    </md-option>
+  </md-autocomplete>
+</md-toolbar>
 <md-grid-list cols="4" rowHeight="1:1" class="pokedex">
   <md-grid-tile class="pokedex-pokemon" *ngFor="let p of pokemon">
     <md-card class="pokemon-card">

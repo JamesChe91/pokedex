@@ -6,8 +6,11 @@ md-grid-tile {
   height: 50px;
   width: auto;
 }
-.searcher{
-  float: right;
+.searcher-right{
+  text-align: right;
+}
+.searcher-left{
+  text-align: left;
 }
 .pokedex{
   margin-top: 35px;

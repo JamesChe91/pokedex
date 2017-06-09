@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -38,7 +38,8 @@ import 'hammerjs';
     /**Register the TTP service */
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [PokedexService],
   bootstrap: [AppComponent]
