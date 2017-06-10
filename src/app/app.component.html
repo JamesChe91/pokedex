@@ -1,18 +1,8 @@
-<md-toolbar color="warn">
-  <img src='../assets/favicon.png' class="brand-logo" />
-  <span>Pokedex</span>
-  <span class="lang-spacer"></span>
-  <md-icon>translate</md-icon>
-  <md-select placeholder="Language" [(ngModel)]="languageSelected" name="language">
-    <md-option *ngFor="let language of languages" [value]="language.value">
-      {{language.viewValue}}
-    </md-option>
-  </md-select>
-</md-toolbar>
-<md-toolbar>
-  <md-icon>search</md-icon>
-  <md-input-container color="primary">
-    <input mdInput placeholder="Search pokemon" [mdAutocomplete]="auto" [formControl]="stateCtrl" color="accent">
+<app-main-toolbar></app-main-toolbar>
+<md-toolbar class="toolbar-search">
+  <md-icon color="warn" >search</md-icon>
+  <md-input-container class="pokemon-search" color="primary">
+    <input   mdInput placeholder="Search pokemon" [mdAutocomplete]="auto" [formControl]="stateCtrl" color="accent">
   </md-input-container>
   <md-autocomplete #auto="mdAutocomplete">
     <md-option *ngFor="let pokemon of filteredPokemon | async" [value]="pokemon.name">

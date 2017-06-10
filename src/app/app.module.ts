@@ -24,12 +24,14 @@ import { CapitalizePipe } from './capitalize.pipe';
 
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    MainToolbarComponent
   ],
   imports: [
     BrowserModule,

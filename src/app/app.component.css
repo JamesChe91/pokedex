@@ -2,16 +2,7 @@
 md-grid-tile {
   background: #fff;
 }
-.brand-logo{
-  height: 50px;
-  width: auto;
-}
-.searcher-right{
-  text-align: right;
-}
-.searcher-left{
-  text-align: left;
-}
+
 .pokedex{
   margin-top: 35px;
 }
@@ -25,9 +16,6 @@ md-grid-tile {
 }
 .btn-action{
   text-align: center;
-}
-.lang-spacer {
-  flex: 1 1 auto;
 }
 .pokemon-card{
 width: 200px;
@@ -48,4 +36,12 @@ margin-right: auto;
 }
 .hidden{
   display: none;
+}
+.pokemon-search{
+  width: 70%;
+}
+
+.toolbar-search{
+  padding-left: 25%;
+  padding-top: 10px;
 }

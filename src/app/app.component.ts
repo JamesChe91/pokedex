@@ -20,15 +20,7 @@ export class CardOverviewExample {}
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  languageSelected: string='EN';
-
-  languages = [
-    {value: 'EN', viewValue: 'English'},
-    {value: 'ES', viewValue: 'Spanish'},
-    {value: 'GER', viewValue: 'German'},
-    {value: 'FRE', viewValue: 'French'},
-    {value: 'JAP', viewValue: 'Japanese'}
-  ];
+  
   /**The component maitains a list o Pokemon objects tha will be rendered.
    * 
    * We initialize it to an empty list
