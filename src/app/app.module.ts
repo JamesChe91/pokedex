@@ -44,7 +44,7 @@ import { GridListPokemonComponent } from './grid-list-pokemon/grid-list-pokemon.
     ReactiveFormsModule    
   ],
   providers: [PokedexService],
-  bootstrap: [AppComponent,GridListPokemonComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private pokedexService: PokedexService) { }
