@@ -1,7 +1,4 @@
 
-md-grid-tile {
-  background: #fff;
-}
 .brand-logo{
   height: 50px;
   width: auto;
@@ -12,30 +9,11 @@ md-grid-tile {
 .searcher-left{
   text-align: left;
 }
-.pokedex{
-  margin-top: 35px;
-}
-.pokedex-pokemon-sprite{
-  height: auto;
-  width: 150px;
-}
-.pokedex-pokemon{
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 .btn-action{
   text-align: center;
 }
 .lang-spacer {
   flex: 1 1 auto;
-}
-.pokemon-card{
-width: 200px;
-}
-.center{
-text-align: center;
-margin-left: auto;
-margin-right: auto;
 }
 .header-image{
   background-image: url('../assets/favicon.png');
@@ -45,7 +23,4 @@ margin-right: auto;
   position: fixed;
   right: 20px;
   bottom: 10px;
-}
-.hidden{
-  display: none;
 }

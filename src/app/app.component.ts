@@ -1,27 +1,21 @@
 import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
-
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-/**
- * Import the Pokedex service
- */
+/*** Import the Pokedex service*/
 import { PokedexService } from './pokedex.service';
-
 /**Import the Pokemon class */
-import { Pokemon } from './pokemon'
-
-
-export class CardOverviewExample {}
+import { Pokemon } from './pokemon';
+ import { GridListPokemonComponent } from './grid-list-pokemon/grid-list-pokemon.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent 
+{
   languageSelected: string='EN';
-
   languages = [
     {value: 'EN', viewValue: 'English'},
     {value: 'ES', viewValue: 'Spanish'},
@@ -58,15 +52,17 @@ export class AppComponent {
 
   ngOnInit() {
     /**Load the initial data. */
-    this.loadMore();
+    // this.loadMore(); 
+    
   }
 
   loadMore() {
+    
     this.isLoading = true;
     /**Use the Pokedex service to load the next (6) Pokemon. */
 
-    this.pokedexService.getPokemon(this.pokemon.length, 6)
-      .then(pokemon => {
+    this.pokedexService.getPokemon(this.pokemon.length, 6).then(pokemon => 
+    {
         pokemon = pokemon;
         /**If loading was successful we append the result to the list */
         this.pokemon = this.pokemon.concat(pokemon);
@@ -76,8 +72,10 @@ export class AppComponent {
       .catch(() => {
         this.error = true;
         this.isLoading = false;
-      })
+      }) 
+  
   }
+  
   filterStates(val: string) {
     return val ? this.pokemon.filter(s => new RegExp(`^${val}`, 'gi').test(s.name))
                : null;

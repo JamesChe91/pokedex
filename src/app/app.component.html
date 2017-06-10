@@ -20,38 +20,10 @@
     </md-option>
   </md-autocomplete>
 </md-toolbar>
-<md-grid-list cols="4" rowHeight="1:1" class="pokedex">
-  <md-grid-tile class="pokedex-pokemon" *ngFor="let p of pokemon">
-    <md-card class="pokemon-card">
-      <md-card-header>
-        <div md-card-avatar class="header-image"></div>
-        <!--<div md-card-avatar>
-          <img [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
-          />
-        </div>-->
-        <md-card-title> {{ p.name | capitalize }}</md-card-title>
-        <md-card-subtitle>#{{p.id}}</md-card-subtitle>
-      </md-card-header>
-      <div class="center">
-        <img md-card-image [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded=true" [attr.src]="p.sprite"
-        />
-      </div>
-      <!--<md-card-content>
-    <p>     
-     
-    </p>
-  </md-card-content>-->
-      <md-card-actions class="btn-action">
-        <button md-raised-button color="primary"><md-icon>art_track</md-icon> More Info</button>
-      </md-card-actions>
-    </md-card>
-  </md-grid-tile>
-  <md-grid-tile *ngIf="isLoading">
-    <md-spinner color="warn">
-    </md-spinner>
-  </md-grid-tile>
-</md-grid-list>
-<button md-mini-fab class="load-button" (click)=loadMore() [disabled]="isLoading">  
+
+<app-grid-list-pokemon></app-grid-list-pokemon>
+
+<button md-mini-fab class="load-button" (click)=<loadMore() [disabled]="isLoading">  
   <span *ngIf="!error">
     <span *ngIf="isLoading"><md-icon>hourglass_empty</md-icon></span>
     <span *ngIf="!isLoading"><md-icon>add</md-icon></span>

@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-
 import { Http, Response } from '@angular/http'
-
 import { Observable } from 'rxjs/Observable';
-
 /**
  * Adds the toPromise method to convert an Observable to a Promise
  */
 import 'rxjs/add/operator/toPromise'
-
 import { Pokemon } from './pokemon'
 
 @Injectable()
-export class PokedexService {
+export class PokedexService 
+{
   private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon/';
   private baseSpriteUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
   /**Inject the HTTP service. */

@@ -24,12 +24,14 @@ import { CapitalizePipe } from './capitalize.pipe';
 
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+import { GridListPokemonComponent } from './grid-list-pokemon/grid-list-pokemon.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    GridListPokemonComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +41,10 @@ import 'hammerjs';
     HttpModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule    
   ],
   providers: [PokedexService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,GridListPokemonComponent]
 })
 export class AppModule {
   constructor(private pokedexService: PokedexService) { }
