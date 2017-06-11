@@ -2,14 +2,3 @@
   background-image: url('../assets/favicon.png');
   background-size: cover;
 }
-.hidden{
-  display: none;
-}
-.pokemon-search{
-  width: 70%;
-}
-
-.toolbar-search{
-  padding-left: 25%;
-  padding-top: 10px;
-}

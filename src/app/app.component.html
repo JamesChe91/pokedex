@@ -1,6 +1,6 @@
 <app-main-toolbar></app-main-toolbar>
 <app-toolbar-search></app-toolbar-search>
-<app-grid-list-pokemon></app-grid-list-pokemon>
-<app-button-load></app-button-load>
+<app-grid-list-pokemon #GridListPokemonComponent></app-grid-list-pokemon>
+<app-button-load [isLoading]="GridListPokemonComponent.isLoading" (myEvent)="GridListPokemonComponent.loadMore()"></app-button-load>
 
 

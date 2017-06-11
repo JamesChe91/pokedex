@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Pokemon } from '../pokemon'
 import { PokedexService } from '../pokedex.service';
 @Component({
@@ -7,12 +7,12 @@ import { PokedexService } from '../pokedex.service';
   styleUrls: ['./grid-list-pokemon.component.css']
 })
 
-export class GridListPokemonComponent
-{
+export class GridListPokemonComponent {
+
   /**The component maitains a list o Pokemon objects tha will be rendered.
    * 
    * We initialize it to an empty list
-   */  
+   */
   pokemon: Pokemon[] = [];
   /**A boolean that represents if we are currently loading data. */
   isLoading: boolean = false;
@@ -24,6 +24,7 @@ export class GridListPokemonComponent
     this.loadMore();
   }
   loadMore() {
+    
     this.isLoading = true;
     /**Use the Pokedex service to load the next (6) Pokemon. */
 
