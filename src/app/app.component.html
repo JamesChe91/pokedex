@@ -1,33 +1,4 @@
-<md-toolbar color="warn">
-  <img src='../assets/favicon.png' class="brand-logo" />
-  <span>Pokedex</span>
-  <span class="lang-spacer"></span>
-  <md-icon>translate</md-icon>
-  <md-select placeholder="Language" [(ngModel)]="languageSelected" name="language">
-    <md-option *ngFor="let language of languages" [value]="language.value">
-      {{language.viewValue}}
-    </md-option>
-  </md-select>
-</md-toolbar>
-<md-toolbar>
-  <md-icon>search</md-icon>
-  <md-input-container color="primary">
-    <input mdInput placeholder="Search pokemon" [mdAutocomplete]="auto" [formControl]="stateCtrl" color="accent">
-  </md-input-container>
-  <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let pokemon of filteredPokemon | async" [value]="pokemon.name">
-      {{ pokemon.name }}
-    </md-option>
-  </md-autocomplete>
-</md-toolbar>
-
+<app-toolbar></app-toolbar>
+<app-toolbar-search></app-toolbar-search>
 <app-grid-list-pokemon></app-grid-list-pokemon>
-<button md-mini-fab class="load-button" (click)=loadMore() [disabled]="isLoading">  
-  <span *ngIf="!error">
-    <span *ngIf="isLoading"><md-icon>hourglass_empty</md-icon></span>
-    <span *ngIf="!isLoading"><md-icon>add</md-icon></span>
-  </span>
-  <span *ngIf="error">
-    Loading failed
-  </span>
-</button>
+<app-button-load></app-button-load>

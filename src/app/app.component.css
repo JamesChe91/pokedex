@@ -1,26 +1,5 @@
 
-.brand-logo{
-  height: 50px;
-  width: auto;
-}
-.searcher-right{
-  text-align: right;
-}
-.searcher-left{
-  text-align: left;
-}
-.btn-action{
-  text-align: center;
-}
-.lang-spacer {
-  flex: 1 1 auto;
-}
 .header-image{
   background-image: url('../assets/favicon.png');
   background-size: cover;
-}
-.load-button {
-  position: fixed;
-  right: 20px;
-  bottom: 10px;
 }

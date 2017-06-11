@@ -1,0 +1,9 @@
+.load-button {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+}
+
+.btn-action{
+  text-align: center;
+}
