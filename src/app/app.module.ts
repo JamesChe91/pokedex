@@ -24,18 +24,22 @@ import { CapitalizePipe } from './capitalize.pipe';
 
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+
 import { GridListPokemonComponent } from './grid-list-pokemon/grid-list-pokemon.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { ToolbarSearchComponent } from './toolbar-search/toolbar-search.component';
 import { ButtonLoadComponent } from './button-load/button-load.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CapitalizePipe,
+
     GridListPokemonComponent,
-    ToolbarComponent,
+     MainToolbarComponent,
     ToolbarSearchComponent,
     ButtonLoadComponent
   ],

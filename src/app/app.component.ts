@@ -7,7 +7,9 @@ import {FormControl} from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {  
+
   /**Inject the Pokedex service */
   constructor() {
     // //autoComplete
