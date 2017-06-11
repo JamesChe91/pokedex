@@ -1,7 +1,9 @@
 
-.searcher-right{
-  text-align: right;
+.pokemon-search{
+  width: 70%;
 }
-.searcher-left{
-  text-align: left;
+
+.toolbar-search{
+  padding-left: 25%;
+  padding-top: 10px;
 }
