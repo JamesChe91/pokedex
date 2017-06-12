@@ -23,11 +23,11 @@ export class ToolbarSearchComponent implements OnInit {
       //  this.isLoading = true;
     /**Use the Pokedex service to load the next (6) Pokemon. */
 
-    this.pokedexService.getPokemon(this.pokemon.length, 900)
+    this.pokedexService.getAllPokemon()
       .then(pokemon => {
-        pokemon = pokemon;
+        this.pokemon = pokemon;
         /**If loading was successful we append the result to the list */
-        this.pokemon = this.pokemon.concat(pokemon);
+        // this.pokemon = this.pokemon.concat(pokemon);
         // this.isLoading = false;
         // this.error = false;
       })

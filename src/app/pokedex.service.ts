@@ -8,8 +8,7 @@ import 'rxjs/add/operator/toPromise'
 import { Pokemon } from './pokemon'
 
 @Injectable()
-export class PokedexService 
-{
+export class PokedexService {
   private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon/';
   private baseSpriteUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
   /**Inject the HTTP service. */
@@ -40,6 +39,10 @@ export class PokedexService
     let body = res.json();
     return body.results || {};
   }
+  private extractCount(res: Response) {
+    let body = res.json();
+    return body.count || {};
+  }
   private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
@@ -51,5 +54,13 @@ export class PokedexService
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
+  }
+  getAllPokemon(): Promise<Pokemon[]> {
+    let offset = 0;
+    return this.http.get(`${this.baseUrl}?offset=${offset}`)
+      .toPromise()
+      .then(response => this.extractCount(response))
+      .then(count => this.getPokemon(offset, count))
+      .catch(this.handleError);
   }
 }
