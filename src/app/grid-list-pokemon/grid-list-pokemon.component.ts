@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Pokemon } from '../pokemon'
 import { PokedexService } from '../pokedex.service';
 @Component({
@@ -40,6 +40,12 @@ export class GridListPokemonComponent {
         this.error = true;
         this.isLoading = false;
       })
+  }
+
+  @Output() mySelectItemCard = new EventEmitter<Pokemon>();
+  
+  openDialogEmmiterCard(pokemon: Pokemon) {
+    this.mySelectItemCard.emit(pokemon);
   }
 
 }

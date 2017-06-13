@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
 import { PokedexService } from '../pokedex.service';
 import { Pokemon } from '../pokemon'
 
@@ -10,39 +11,31 @@ import { Pokemon } from '../pokemon'
 })
 export class ToolbarSearchComponent implements OnInit {
   pokemon: Pokemon[] = [];
-  constructor(private pokedexService: PokedexService) 
-  {
-    //autoComplete
-    this.stateCtrl = new FormControl();
-    this.filteredPokemon = this.stateCtrl.valueChanges
-        .startWith(null)
-        .map(name => this.filterStates(name));
-   }
-
-  ngOnInit() {
-      //  this.isLoading = true;
-    /**Use the Pokedex service to load the next (6) Pokemon. */
-
-    this.pokedexService.getAllPokemon()
-      .then(pokemon => {
-        this.pokemon = pokemon;
-        /**If loading was successful we append the result to the list */
-        // this.pokemon = this.pokemon.concat(pokemon);
-        // this.isLoading = false;
-        // this.error = false;
-      })
-      // .catch(() => {
-      //   this.error = true;
-      //   this.isLoading = false;
-      // })
-  }
-
   //autoComplete
   stateCtrl: FormControl;
   filteredPokemon: any;
+  constructor(private pokedexService: PokedexService) {
+    //autoComplete
+    this.stateCtrl = new FormControl();
+    this.filteredPokemon = this.stateCtrl.valueChanges
+      .startWith(null)
+      .map(name => this.filterPokemon(name));
+  }
 
+  ngOnInit() {
+    this.pokedexService.getAllPokemon()
+      .then(pokemon => this.pokemon = pokemon)
+  }
 
-  filterStates(val: string) {
-    return val ? this.pokemon.filter(s => new RegExp(`^${val}`, 'gi').test(s.name)): null;
+  @Output() mySelectItemEvent = new EventEmitter<Pokemon>();
+  
+  openDialogEmmiter(pokemon: Pokemon) {
+    this.mySelectItemEvent.emit(pokemon);
+  }
+
+  filterPokemon(val: string) {
+    return val ? this.pokemon.filter(s => new RegExp(`^${val}`, 'gi').test(s.name)) : null;
   }
 }
+
+
