@@ -21,7 +21,6 @@ export class ButtonLoadComponent implements OnInit {
    * We initialize it to an empty list
    */
 
-  pokemon: Pokemon[] = [];
   /**A boolean that represents if we are currently loading data. */
   @Input() isLoading: boolean = false;
   /**This boolean will be set to true if an error occurred */
@@ -29,33 +28,9 @@ export class ButtonLoadComponent implements OnInit {
   constructor(private pokedexService: PokedexService) { }
 
   ngOnInit() {
-    // this.pokedexService.getPokemon(this.pokemon.length, 6)
-    //   .then(pokemon => {
-    //     pokemon = pokemon;
-    //     /**If loading was successful we append the result to the list */
-    //     this.pokemon = this.pokemon.concat(pokemon);
-    //     // this.isLoading = false;
-    //     // this.error = false;
-    //   })
-    this.loadMore();
+  
   }
 
-  loadMore() {
-    this.isLoading = true;
-    /**Use the Pokedex service to load the next (6) Pokemon. */
-
-    this.pokedexService.getPokemon(this.pokemon.length, 60)
-      .then(pokemon => {
-        pokemon = pokemon;
-        /**If loading was successful we append the result to the list */
-        this.pokemon = this.pokemon.concat(pokemon);
-        this.isLoading = false;
-        this.error = false;
-      })
-      .catch(() => {
-        this.error = true;
-        this.isLoading = false;
-      })
-  }
+ 
 
 }
