@@ -1,4 +1,4 @@
-
-md-grid-tile {
-  background: #fff;
+.header-image{
+  background-image: url('../assets/favicon.png');
+  background-size: cover;
 }

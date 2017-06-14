@@ -1,0 +1,11 @@
+<md-toolbar class="toolbar-search">
+  <md-icon>search</md-icon>
+  <md-input-container color="primary" class="pokemon-search">
+    <input mdInput placeholder="Search pokemon" [mdAutocomplete]="auto" [formControl]="stateCtrl" color="accent">
+  </md-input-container>
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let pokemon of filteredPokemon | async" (onSelectionChange)="openDialogEmmiter(pokemon)">
+      {{ pokemon.name }}
+    </md-option>
+  </md-autocomplete>
+</md-toolbar>

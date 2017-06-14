@@ -1,0 +1,9 @@
+<button md-mini-fab class="load-button" (click)="loadPokemonb()" [disabled]="isLoading">  
+  <span *ngIf="!error">
+    <span *ngIf="isLoading"><md-icon>hourglass_empty</md-icon></span>
+    <span *ngIf="!isLoading"><md-icon>add</md-icon></span>
+  </span>
+  <span *ngIf="error">
+    Loading failed
+  </span>
+</button>
